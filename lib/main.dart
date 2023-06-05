@@ -6,7 +6,7 @@ void main() async{
   await EasyLocalization.ensureInitialized();
   runApp(EasyLocalization(
     // ignore: prefer_const_literals_to_create_immutables
-    supportedLocales: [ Locale('en'), Locale('hi'), Locale('ml')],
+    supportedLocales: [ Locale('en'), Locale('hi'), Locale('ml'),Locale('ar')],
     path: 'assets/translation',
     fallbackLocale: const Locale('en','IN'),
     saveLocale: true,
@@ -25,21 +25,6 @@ class MyApp extends StatelessWidget {
       locale: context.locale,
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a blue toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
@@ -51,14 +36,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
 
   final String title;
 
@@ -67,35 +44,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  var langcode=['en','ml','hi'];
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
+   var langcode=['en','ml','hi','ar'];
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
         actions: [
           PopupMenuButton(itemBuilder:(context)=>[
@@ -130,14 +84,14 @@ class _MyHomePageState extends State<MyHomePage> {
                     });
                   },
                 ),
-                // popupmenu item 2
+                // popupmenu item 3
                 PopupMenuItem(
-                  value: 2,
+                  value: 3,
                   // row has two child icon and text
                   child: const Row(
                     children: [
                       
-                      Text("Malayalam")
+                      Text("Hindi")
                     ],
                   ),
                   onTap: (){
@@ -146,43 +100,142 @@ class _MyHomePageState extends State<MyHomePage> {
                     });
                   },
                 ),
+                // popupmenu item 4
+                PopupMenuItem(
+                  value: 4,
+                  // row has two child icon and text
+                  child: const Row(
+                    children: [
+                      
+                      Text("Arabic")
+                    ],
+                  ),
+                  onTap: (){
+                    setState(() {
+                     EasyLocalization.of(context)!.setLocale(Locale(langcode[3]));
+                    });
+                  },
+                ),
                 
           ] ,)
         ],
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text('hello'.tr().toString(),
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Text('hello'.tr().toString(),),
+              Text('contacts'.tr().toString(),),
+              Text('messages'.tr().toString(),),
+              Text('daysleft'.tr().toString(),),
+              Text('searchprofile'.tr().toString(),),
+              Text('editprofile'.tr().toString(),),
+              Text('notification'.tr().toString(),),
+              Text('accountsettings'.tr().toString(),),
+              Text('helpsupport'.tr().toString(),),
+              Text('feedback'.tr().toString(),),
+              Text('abouthn'.tr().toString(),),
+              Text('upgradetoprem'.tr().toString(),),
+              Text('vievarifyprof'.tr().toString(),),
+              Text('sendpersonalisedmesg'.tr().toString(),),
+              Text('viewverifiedpcontact'.tr().toString(),),
+              Text('premium'.tr().toString(),),
+              Text('assisted'.tr().toString(),),
+              Text('interests'.tr().toString(),),
+              Text('profilevisit'.tr().toString(),),
+              Text('shortlist'.tr().toString(),),
+              Text('blocked'.tr().toString(),),
+              Text('ignorelist'.tr().toString(),),
+              Text('photorequest'.tr().toString(),),
+              Text('getuprade'.tr().toString(),),
+              Text('editmyprof'.tr().toString(),),
+              Text('diabilityprof'.tr().toString(),),
+              Text('orphanproif'.tr().toString(),),
+              Text('advancedsearch'.tr().toString(),),
+              Text('idselect'.tr().toString(),),
+              Text('age'.tr().toString(),),
+              Text('maritalstatus'.tr().toString(),),
+              Text('select'.tr().toString(),),
+              Text('highestedu'.tr().toString(),),
+              Text('country'.tr().toString(),),
+              Text('state'.tr().toString(),),
+              Text('district'.tr().toString(),),
+              Text('city'.tr().toString(),),
+              Text('height'.tr().toString(),),
+              Text('weight'.tr().toString(),),
+              Text('bodytype'.tr().toString(),),
+              Text('skincolor'.tr().toString(),),
+              Text('belief'.tr().toString(),),
+              Text('physicalstatus'.tr().toString(),),
+              Text('workstatus'.tr().toString(),),
+              Text('sortby'.tr().toString(),),
+              Text('showonly'.tr().toString(),),
+              Text('search'.tr().toString(),),
+              Text('searchbyid'.tr().toString(),),
+              Text('chooseypurhappiness'.tr().toString(),),
+              Text('enterprofileid'.tr().toString(),),
+              Text('photovisibilty'.tr().toString(),),
+              Text('visibilytoall'.tr().toString(),),
+              Text('rotectedwithpass'.tr().toString(),),
+              Text('about'.tr().toString(),),
+              Text('basicinformation'.tr().toString(),),
+              Text('religiousinfo'.tr().toString(),),
+              Text('eduandproff'.tr().toString(),),
+              Text('physicalattribute'.tr().toString(),),
+              Text('locationandcontact'.tr().toString(),),
+              Text('familydetails'.tr().toString(),),
+              Text('hobbies'.tr().toString(),),
+              Text('partnerpref'.tr().toString(),),
+              Text('basicpref'.tr().toString(),),
+              Text('eduandprofinfo'.tr().toString(),),
+              Text('locationpref'.tr().toString(),),
+              Text('notificationalert'.tr().toString(),),
+              Text('emailalert'.tr().toString(),),
+              Text('smsalert'.tr().toString(),),
+              Text('profilehideunhide'.tr().toString(),),
+              Text('hide'.tr().toString(),),
+              Text('unhide'.tr().toString(),),
+              Text('entercurrpass'.tr().toString(),),
+              Text('enternewpass'.tr().toString(),),
+              Text('enterconfirmpass'.tr().toString(),),
+              Text('changepass'.tr().toString(),),
+              Text('needhelptomakepaymet'.tr().toString(),),
+              Text('voicesupport'.tr().toString(),),
+              Text('whatsappsupport'.tr().toString(),),
+              Text('callnow'.tr().toString(),),
+              Text('message'.tr().toString(),),
+              Text('subscribe'.tr().toString(),),
+              Text('onlinepayment'.tr().toString(),),
+              Text('depositbankacc'.tr().toString(),),
+              Text('doorstep'.tr().toString(),),
+              Text('payentmethod'.tr().toString(),),
+              Text('cancel'.tr().toString(),),
+              Text('new'.tr().toString(),),
+              Text('verified'.tr().toString(),),
+              Text('interest'.tr().toString(),),
+              Text('interested'.tr().toString(),),
+              Text('report'.tr().toString(),),
+              Text('reportprofile'.tr().toString(),),
+              Text('reason'.tr().toString(),),
+              Text('offline'.tr().toString(),),
+              Text('howcanwehelpyou'.tr().toString(),),
+              Text('like&islike'.tr().toString(),),
+              Text('yourprofilematcheswith'.tr().toString(),),
+              Text('requestsend'.tr().toString(),),
+              Text('requestrecieve'.tr().toString(),),
+              Text('send'.tr().toString(),),
+              Text('accepted'.tr().toString(),),
+              Text('accept'.tr().toString(),),
+              Text('ignore'.tr().toString(),),
+              Text('mailus'.tr().toString(),),
+              Text('helpcenter'.tr().toString(),),
+              Text('ifyouneedanyhelp'.tr().toString(),),
+             
+            ],
+          ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
